@@ -1,0 +1,1 @@
+- [WebGL preview fallback](webgl-preview-fallback.md) — mount React Three Fiber only when the browser exposes WebGL; preserve a matching fallback.
