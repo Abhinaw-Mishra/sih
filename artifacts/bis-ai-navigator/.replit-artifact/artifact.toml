@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "BIS AI — Intelligent Navigator"
+description = "A responsive AI-powered standards and compliance navigator for Indian Standards, BIS certification, testing labs, hallmarking, and source-backed guidance."
+version = "1.0.0"
+id = "artifacts/bis-ai-navigator"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21692
+
+[services.development]
+run = "pnpm --filter @workspace/bis-ai-navigator run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/bis-ai-navigator", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/bis-ai-navigator/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21692"
+BASE_PATH = "/"
